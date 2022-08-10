@@ -32,3 +32,43 @@ var isAnagram = function (s, t) {
   }
   return true;
 };
+
+
+//given an array of integers nums and an integer target ,  return indices of the two numbers such that they add up to target.you may assume tahta each input would have exactlyone solution and you may not use the same element twice. return answwer in any order
+/*
+
+ nums = [1, 5, 9]
+ target = 10
+  
+ [0, 2]
+
+ i =1
+ j=2
+
+ time complexity: 0(N^2) -> 0(N)
+ space complexity: 0(1) -> constant -> 0(N)
+
+ Hashmap
+ nums = [1, 5, 9]
+ target = 10
+
+ map ={1}
+i = 0
+value = 1, 5, 2
+complement_pair = 10 -1 = 9
+[0, 2]
+map[1]
+*/
+
+var twoSum = function(nums, target) {
+  var map = {};
+  for(var i = 0; i < nums.length; i++) {
+    var value = nums[i];
+    var complementPair = target - value;
+    if (map[complementPair] !== undefined) {
+      return [map[complementPair], i];
+    } else {
+      map[value] = i;
+    }
+  }
+} 
