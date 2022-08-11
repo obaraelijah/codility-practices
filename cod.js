@@ -72,3 +72,37 @@ var twoSum = function(nums, target) {
     }
   }
 } 
+
+
+//given an array of integers , 1 < a[i]  < n(n = size of array) some elements appear twice and others appear once.find all the elemnts that appear twice in an array.do it in 0(n) time
+//finding duplicates in an array
+//example [4, 3, 2, 7, 8, 2, 3, 1]
+/* 
+[4, 3, 2, 2, 3, 1]
+[1, 1, 1, 1, 0, 0] 
+
+result = [2,3],
+
+
+nums = [4, 3, -2, -2, 3, 1]
+
+result = [],
+
+i = 0
+value=4
+index = 4-1 = 3, 3-1 = 2
+nums[index] * =-1
+
+nums[2] * = -1
+*/
+var findDuplicates = function(nums) {
+  var result = [];
+  for( var i =0; i < nums.length; i++) {
+    var value = Math.abs(nums[i]);
+      var index = value -1;
+      if(nums[index] < 0) {
+        result.push(value);
+      } else {nums[index] *= -1}
+  }
+  return result;
+}
