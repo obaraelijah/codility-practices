@@ -106,3 +106,83 @@ var findDuplicates = function(nums) {
   }
   return result;
 }
+
+
+// REVERSING A LINK LIsts
+
+// given the head of a singlly linked list, reverse the list and return reversed list
+
+const reversedList = (head) => {
+  let previous = null
+  let current = head
+  while(current) {
+    const next = current.next
+    current.next = previous
+    previous = current
+    current = next
+  }
+  return previous
+}
+
+//given the head of a singlgly linked list, return true if it is a palindrome
+//linear space solution
+var isPalindrome = function(head) {
+    let slow = head;
+    let fast = head;
+    const stack = [];
+    while(fast) {
+      if(!fast.next) {
+        slow = slow.next
+        break;
+      }
+        stack.push(slow.val);
+      slow =slow.next;
+      fast= fast.next.next;
+
+    }
+    while(slow) {
+      if(stack.pop() !== slow.val) return false; 
+      slow = slow.next;
+    }
+    return true;
+}
+
+//optimal solution
+
+const findMidpoint = (head) => {
+  let slow = head;
+  let fast = head;
+  while(fast && fast.next) {
+    slow =slow.next;
+    fast = fast.next.next;
+  }
+  return slow;
+}
+
+const reverse = (head) => {
+  let previous =null;
+  let cur = head;
+  while(cur) {
+  const next = cur.next;
+    cur.next =prev;
+    prev= cur;
+    cur = next;
+  }
+  return prev;
+}
+
+const compare =(list1, list2) => {
+  while(list1 && list2) {
+    if(list1.val !== list2.val) return false;
+    list1= list1.next;
+    list2 = list2.next;
+  }
+  return true;
+}
+
+
+var isPalindrome =(head) => {
+   const midpoint = findMidpoint(head);
+    const tail = reverse(midpoint);
+    return compare(head, tail);
+}
