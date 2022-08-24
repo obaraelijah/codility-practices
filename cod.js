@@ -256,4 +256,35 @@ var isValidSudoku = function(board) {
   return true;
 }
 
-//method 3
+//remove elements
+//given an array nums and a value val, remove all instances of that value in-place and return the new length .Do not allocate extra space for another space , yyou must do this by modifying the input array iplace with 0(1) extra memory.
+
+function removeElement (nums, val) {
+  if(!nums) return 0;
+  for(let i = 0; i < nums.length; i++) {
+    if(nums[i] === val) {
+      nums.splice(i, 1);
+      i--
+    }
+  }
+  return nums.length;
+}; 
+
+//method 2
+function removeElement (nums, val) {
+  if(!nums) return 0;
+  let pointer =0;
+
+  for(let i = 0; i < nums.length; i++) {
+    if(nums[i]!== val) {
+      nums[pointer] = nums[i];
+      pointer++
+    }
+  }
+  return pointer;
+}; 
+
+// given an array of integers of the two numbers such that they add up to a specific target.you may assume that each input would have exactly one solution and you may not use the same element twice.
+function twoSum(nums, target) {
+
+};
